@@ -51,7 +51,18 @@ $userInstance = new User();
      * Honestly, its one of those things that is much easier in php.
      */
 foreach ($userData as $user => $data) {
-    $userInstance->exchangeArray($data);
+    /**
+     * @see User::exchangeArray()
+     *
+     */
+    $userInstance->exchangeArray($data); // This method really should not belong to User, It will be moving to an Interface ;)
+    /**
+     * Since this is occuring in a loop we get a local scope variable that holds an
+     * instance of User that represents each user in the array, this could just as easily
+     * be the return of a MySQL query, data returned from a remote API etc etc
+     *
+     * Yes, I realize that all of this code needs vast improvements, thats the whole point :)
+     */
     ${$user} = clone($userInstance);
 }
 
