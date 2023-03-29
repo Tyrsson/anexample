@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Message;
+namespace App\Model;
 
 use Laminas\Stdlib\MessageInterface as BaseInterface;
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\User;
 
 // This tells the autoloader we need to use this class and it include/requires it for use by the namespace
-use App\Message;
+use App\Model\Message;
 use App\User\AbstractUser;
 /**
  * class is marked as final, which means it can not be extended further
