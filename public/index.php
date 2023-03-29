@@ -61,7 +61,7 @@ foreach ($userData as $user => $data) {
 }
 
 Debug::dump($ana, 'Line #:' . __LINE__); // <- argument 2 allows you to add a string tag, I like to use that as it adds the file and Line number
-Debug::dump($joey);
+Debug::dump($joey, 'Dumping $joey', true);
 
 
 
