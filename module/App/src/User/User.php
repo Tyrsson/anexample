@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\User;
 
 // This tells the autoloader we need to use this class and it include/requires it for use by the namespace
-use App\AbstractUser;
+use App\Message;
+use App\User\AbstractUser;
 /**
  * class is marked as final, which means it can not be extended further
  *
@@ -13,19 +14,6 @@ use App\AbstractUser;
 final class User extends AbstractUser
 {
     private bool $hasReadMessage = false;
-
-    public function exchangeArray(array $data): void
-    {
-        // please note there is much easier ways to do this, but I want you to be able to follow
-        foreach ($data as $key => $value) {
-            if ($key === 'firstName') {
-                $this->setFirstName($value);
-            }
-            if ($key === 'lastName') {
-                $this->setLastName($value);
-            }
-        }
-    }
 
     protected function readMessage(): void
     {

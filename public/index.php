@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Message;
-use App\User;
+use App\User\User;
 use Webinertia\Utils\Debug;
 /**
  * I had to make a couple decisions here. But maybe it will not make the example to complicated
@@ -56,17 +56,11 @@ foreach ($userData as $user => $data) {
      *
      */
     $userInstance->exchangeArray($data); // This method really should not belong to User, It will be moving to an Interface ;)
-    /**
-     * Since this is occuring in a loop we get a local scope variable that holds an
-     * instance of User that represents each user in the array, this could just as easily
-     * be the return of a MySQL query, data returned from a remote API etc etc
-     *
-     * Yes, I realize that all of this code needs vast improvements, thats the whole point :)
-     */
+
     ${$user} = clone($userInstance);
 }
 
-Debug::dump($ana);
+Debug::dump($ana, 'Line #:' . __LINE__); // <- argument 2 allows you to add a string tag, I like to use that as it adds the file and Line number
 Debug::dump($joey);
 
 
