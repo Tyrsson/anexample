@@ -56,12 +56,25 @@ foreach ($userData as $user => $data) {
      *
      */
     $userInstance->exchangeArray($data); // This method really should not belong to User, It will be moving to an Interface ;)
-
+    /**
+     * String manipulation lesson. In php, as of now atleast, you can use ${$user} =
+     * So whats happening here... Let me see if I can explain it. We are wanting to dynamically create a variable in the local scope
+     * that will result in the form of the array key, in this case one is ana, one is joey. We already have the string, its the array key
+     * since we are doing this ${} and it encloses the $user, php uses the exact key string to create the variable which is what allows
+     * us to Debug::dump $ana and $joey
+     * In other words, php will convert anything inside {} to the string identifier used to identify the variable in the symbol table
+     * the symbol table being where php stores the identifiers for all variables, classes etc etc. Its another one of those things
+     * that is much easier in php than js
+     */
     ${$user} = clone($userInstance);
 }
 
-Debug::dump($ana, 'Line #:' . __LINE__); // <- argument 2 allows you to add a string tag, I like to use that as it adds the file and Line number
+/**
+ * lol, writing the original comment is what spurred me to update the dump code so that its not needed :)
+ * */
+Debug::dump($ana, 'Line #:' . __LINE__);
 Debug::dump($joey, 'Dumping $joey', true);
 
-
+// this was a test to verify that the correct line was found in the stack trace ;)
+$joey->readMessage();
 

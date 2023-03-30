@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\User;
 
-use App\Message;
+use App\Model\Message;
 use Laminas\Stdlib\ArrayObject;
 
 // class is marked abstract, which means you can not call new User() and create an instance, you must extend it
-abstract class AbstractUser extends ArrayObject
+abstract class AbstractUser extends ArrayObject implements UserInterface
 {
     protected ?string $firstName;
     protected ?string $lastName;
@@ -24,12 +24,4 @@ abstract class AbstractUser extends ArrayObject
     {
         parent::__construct($input, self::ARRAY_AS_PROPS);
     }
-
-    abstract protected function readMessage();
-
-    abstract protected function sendMessage();
-
-    abstract protected function notifyMessageRead();
-
-    abstract protected function notifyMessageSent();
 }

@@ -7,6 +7,7 @@ namespace App\User;
 // This tells the autoloader we need to use this class and it include/requires it for use by the namespace
 use App\Model\Message;
 use App\User\AbstractUser;
+use Webinertia\Utils\Debug;
 /**
  * class is marked as final, which means it can not be extended further
  *
@@ -15,9 +16,10 @@ final class User extends AbstractUser
 {
     private bool $hasReadMessage = false;
 
-    protected function readMessage(): void
+    public function readMessage(): void
     {
-
+        $test = 'This is a test';
+        Debug::dump($test);
     }
 
     protected function sendMessage(): void
