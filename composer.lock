@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fd4ab3c45f7fc49e0b3a72b6c482b9f",
+    "content-hash": "58347d956dea05b3a5ed766b9e17fd3a",
     "packages": [
         {
             "name": "laminas/laminas-component-installer",
@@ -272,16 +272,16 @@
         },
         {
             "name": "webinertia/webinertia-utils",
-            "version": "0.0.6",
+            "version": "0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webinertia/utils.git",
-                "reference": "2b70033a63061a08c2e32241405e653e9226b247"
+                "reference": "ac04017fefe49eae56d888f4393b0abc41796c25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webinertia/utils/zipball/2b70033a63061a08c2e32241405e653e9226b247",
-                "reference": "2b70033a63061a08c2e32241405e653e9226b247",
+                "url": "https://api.github.com/repos/webinertia/utils/zipball/ac04017fefe49eae56d888f4393b0abc41796c25",
+                "reference": "ac04017fefe49eae56d888f4393b0abc41796c25",
                 "shasum": ""
             },
             "require": {
@@ -320,7 +320,7 @@
                 "issues": "https://github.com/webinertia/modelmanager/issues",
                 "source": "https://github.com/webinertia/modelmanager"
             },
-            "time": "2022-09-19T15:25:02+00:00"
+            "time": "2023-03-29T17:39:27+00:00"
         }
     ],
     "packages-dev": [],
