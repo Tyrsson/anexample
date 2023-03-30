@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Message;
-use App\User;
+use App\User\User;
 use Webinertia\Utils\Debug;
 /**
  * I had to make a couple decisions here. But maybe it will not make the example to complicated
@@ -57,17 +57,24 @@ foreach ($userData as $user => $data) {
      */
     $userInstance->exchangeArray($data); // This method really should not belong to User, It will be moving to an Interface ;)
     /**
-     * Since this is occuring in a loop we get a local scope variable that holds an
-     * instance of User that represents each user in the array, this could just as easily
-     * be the return of a MySQL query, data returned from a remote API etc etc
-     *
-     * Yes, I realize that all of this code needs vast improvements, thats the whole point :)
+     * String manipulation lesson. In php, as of now atleast, you can use ${$user} =
+     * So whats happening here... Let me see if I can explain it. We are wanting to dynamically create a variable in the local scope
+     * that will result in the form of the array key, in this case one is ana, one is joey. We already have the string, its the array key
+     * since we are doing this ${} and it encloses the $user, php uses the exact key string to create the variable which is what allows
+     * us to Debug::dump $ana and $joey
+     * In other words, php will convert anything inside {} to the string identifier used to identify the variable in the symbol table
+     * the symbol table being where php stores the identifiers for all variables, classes etc etc. Its another one of those things
+     * that is much easier in php than js
      */
     ${$user} = clone($userInstance);
 }
 
-Debug::dump($ana);
-Debug::dump($joey);
+/**
+ * lol, writing the original comment is what spurred me to update the dump code so that its not needed :)
+ * */
+Debug::dump($ana, 'Line #:' . __LINE__);
+Debug::dump($joey, 'Dumping $joey', true);
 
-
+// this was a test to verify that the correct line was found in the stack trace ;)
+$joey->readMessage();
 
