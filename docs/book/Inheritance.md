@@ -6,7 +6,7 @@ Short explainations for testing the directory structure for articles.
 
 Generally interfaces are roadmaps for what a group of classes are going to do. They define the public visibilty of the group of classes
 that will implement said interface. They will also usually define constants to normalize certain values that the classes will be using.
-You can not instantiate an instance of an Interface. Classes you them via the **implements** keyword. All interface names must end with Interface ie ExampleInterface. Interfaces can only implement public methods (functions) and you can not define a body in the interface. Only the methods signature is defined in the interface. If you need visibility more restrictive than public then you should provide an Abstract class that implements the Interface and then declare the protected methods as abstract in the abstract class see below.
+You can not instantiate an instance of an Interface. Classes you them via the **implements** keyword. All interface names must end with Interface ie ExampleInterface. Interfaces can only implement public methods (functions) and you can not define a body in the interface. Only the methods signature is defined in the interface. If you need visibility more restrictive than public then you should provide an Abstract class that implements the Interface and then declare the protected methods as abstract in the abstract class see below. Interface can also extend other interfaces.
 
 ```
 interface ExampleInterface
@@ -29,10 +29,17 @@ abstract class AbstractExample implements ExampleInterface
 {
     protected abstract function doSomething(?array $someVariable = []);
 
+    protected function withBody(?string $someString): array
+    {
+        if (is_string($someString)) {
+            return ['string' => $someString];
+        }
+        return [];
+    }
 }
 ```
 Notice now that I did NOT implement the interface method in the Abstract class. You do not have to becuase you can not create an instance
-of an Abstract class, just like interfaces. You have to extend an Abstract class into a "concrete implementation".
+of an Abstract class, just like interfaces. You have to extend an Abstract class into a "concrete implementation". But as you can see, the function in an abstract class can have bodies and can define functionality. That functionality should be abstract in nature and shared between all implementing classes.
 
 ```
 final class Example extends AbstractExample
