@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\User;
+namespace App;
 
 // This tells the autoloader we need to use this class and it include/requires it for use by the namespace
-use App\Model\Message;
+use App\Message;
 use App\User\AbstractUser;
 use Webinertia\Utils\Debug;
 /**
