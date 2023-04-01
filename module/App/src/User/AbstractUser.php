@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User;
 
-use App\Model\Message;
+use App\Message;
 use Laminas\Stdlib\ArrayObject;
 
 // class is marked abstract, which means you can not call new User() and create an instance, you must extend it

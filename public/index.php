@@ -3,10 +3,19 @@
 declare(strict_types=1);
 
 use App\Message;
-use App\User\User;
+use App\User;
 use Webinertia\Utils\Debug;
 
 require __DIR__ . '/../vendor/autoload.php';
+
+/**
+ * Implementation change. As you can see I moved two classes, the only real reason for this change is so that you have example
+ * of first level namespacing present. The reason I felt this was important is because I first learn to code before namespacing
+ * was possible in Php lol. So I always try to cover every aspect of it and there will be several lessons dealing only with it.
+ * But, the truth of it is, im more focused on getting you started writing code, useful code, you can learn the nuts and bolts of
+ * that shortly when you have your feet under you. for the moment, as long as you can load the code, which basically means follow
+ * the naming conventions and file locations that are being used, it doesnt matter.
+ */
 
 /**
  * So what would a $user->fetch* method look like for our current User model/service?
@@ -31,19 +40,29 @@ $userInstance = new User();
  * it has to do with overriding php's "magic" methods.
  */
 $ana = $userInstance->fetchUser('ana');
-Debug::dump($ana);
+Debug::dump($ana, 'You are returned as an object instance');
 
 // how does this work if the property has not been assigned a value?
 Debug::dump($ana->firstName, 'This is the one that shouldnt work'); // see how I tagged that dump from here ;)
 //
 
 $joey = $userInstance->fetchUser('joey', false);
-Debug::dump($joey);
+Debug::dump($joey, 'I am returned as an array');
 
 $steve = $userInstance->fetchUser('steve');
-Debug::dump($steve);
+Debug::dump($steve, 'Steve was not found, apparently we do not know him :P');
 
 // That concludes todays changes.
 // Another bonus question. I never told you why coding fetchUser the way I did prevents someone from replacing it later in the inheritance chain
 // so how does it work?
+
+// and we have a test user
+Debug::dump($userInstance->fetchUser('testUser'), 'Yes you can dump the return of method calls, if they return a value');
+
+/**
+ * My next lesson might be to show you how to use Laminas\Config to store that data back to a array using a Laminas\Config\Writer instance
+ * Is this configuration? No, but its just a php array, so why couldnt we? We absolutely can. I can literally install the Laminas\Config package
+ * modify the classes and have the rewriting of the user arrays working in probably.... 10-20 minutes. It will take me two hours to write the
+ * dialog explaning how to do it =)
+ */
 
