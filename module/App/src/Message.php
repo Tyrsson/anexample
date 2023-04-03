@@ -16,5 +16,4 @@ final class Message extends AbstractMessage
     protected function notifyMessageRead() { }
 
     protected function notifyMessageSent() { }
-
 }
